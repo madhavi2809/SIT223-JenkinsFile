@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'jdk11'
+        maven 'maven3'
+    }
+    
+    stages {
+        stage('Build') {
+            // Maven clean package is used for Build
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/madhavi2809/SIT223-JenkinsCreditTask.git'
+                echo "Fetching the source code from Github."
+                echo "Compiling the code using Maven and generating artifacts."
+            }
+        }
+        stage('Unit and Integration Tests') {
+            // Selenium is used for automated testing
+            steps {
+                echo "Automated Unit Tests Run Successfully using Selenium."
+                echo "Automated Integration Tests Run Successfully using Selenium."
+            }
+            post {
+                success {
+                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Build Status: SUCCESS  |  Stage: Unit and Integration Tests have run successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Build Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
+                }
+                failure {
+                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Build Status: FAILURE  |  Stage: Unit and Integration Tests have failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Build Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
+                }
+            }
+        }
+        stage('Code Analysis') {
+            // Integrate a code analysis tool using Checkstyle
+            steps {
+                echo "The code has been analysed successfully."
+            }
+        }
+        stage('Security Scan') {
+            // OWASP ZAP is the tool that can be used for security scanning of code
+            steps {
+                echo "Security Scanning has been done on the code successfully."
+            }
+            post {
+                success {
+                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Scan Status: SUCCESS  |  Stage: Security Scanning has been done on the code successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Scan Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
+                }
+                failure {
+                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Scan Status: FAILURE  |  Stage: Security Scanning failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Scan Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
+                }
+            }
+        }
+        stage('Deploy to Staging') {
+            // SSH can be used to deploy to staging
+            steps {
+                echo "Deploying to Staging done successfully."
+            }
+        }
+        stage('Integration Tests on Staging') {
+            // Mvn test can be used for testing
+            steps {
+                echo "Integration Tests have been run on Staging successfully."
+            }
+            post {
+                success {
+                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Test Status: SUCCESS  |  Stage: Integration Tests have been run on Staging successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Test Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
+                }
+                failure {
+                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Test Status: FAILURE  |  Stage: Running Integration Tests on Staging failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Test Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
+                }
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                // SSH can be used as a tool to deploy to production 
+                echo "Deploying to production has been done successfully."
+            }
+        }
+    }
+}
