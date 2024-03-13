@@ -42,10 +42,10 @@ pipeline {
             }
             post {
                 success {
-                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Scan Status: SUCCESS  |  Stage: Security Scanning has been done on the code successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Scan Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
+                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Build Status: SUCCESS  |  Stage: Security Scanning has been done on the code successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Build (Scan) Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
                 }
                 failure {
-                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Scan Status: FAILURE  |  Stage: Security Scanning failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Scan Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
+                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Build Status: FAILURE  |  Stage: Security Scanning failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Build (Scan) Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
                 }
             }
         }
@@ -62,10 +62,10 @@ pipeline {
             }
             post {
                 success {
-                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Test Status: SUCCESS  |  Stage: Integration Tests have been run on Staging successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Test Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
+                       mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Build Status: SUCCESS  |  Stage: Integration Tests have been run on Staging successfully.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Build (Test) Status: SUCCESS!', to: 'madhavi4871.be22@chitkara.edu.in'
                 }
                 failure {
-                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Test Status: FAILURE  |  Stage: Running Integration Tests on Staging failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Test Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
+                        mail bcc: '', body: 'Project Name: Jenkins_Credit_Task  |  Build Status: FAILURE  |  Stage: Running Integration Tests on Staging failed.', cc: '', from: 'madhavitest18@gmail.com', mimeType: 'text/html', replyTo: 'jenkins@example.com', subject: 'Build (Test) Status: FAILURE!', to: 'madhavi4871.be22@chitkara.edu.in'
                 }
             }
         }
